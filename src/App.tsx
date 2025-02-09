@@ -1,4 +1,5 @@
 import { Input } from '@/components';
+import './index.css';
 
 function App() {
   return (
