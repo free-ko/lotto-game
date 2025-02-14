@@ -36,7 +36,8 @@ const StatisticsSection = ({ numberFrequency }: IStatisticsSectionProps) => {
                       <span className="text-xs text-gray-600">{count}</span>
                       <div
                         className="w-4 rounded bg-blue-500"
-                        style={{ height: `${barHeight}px` }}></div>
+                        style={{ height: `${barHeight}px` }}
+                      />
                       <span className="mt-1 text-xs text-gray-700">{number}</span>
                     </div>
                   );
