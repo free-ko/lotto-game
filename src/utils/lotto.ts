@@ -67,18 +67,18 @@ export const calculateWinningResults = (
     꽝: 0,
   };
 
+  const rankMap: Record<number, (isBonusMatched: boolean) => Rank> = {
+    6: () => '1등',
+    5: (isBonusMatched: boolean) => (isBonusMatched ? '2등' : '3등'),
+    4: () => '4등',
+    3: () => '5등',
+  };
+
   tickets.forEach(ticket => {
     const matchCount = ticket.filter(num => winningDraw.winningNumbers.includes(num)).length;
-    const bonusMatched = ticket.includes(winningDraw.bonusNumber);
+    const isBonusMatched = ticket.includes(winningDraw.bonusNumber);
+    const rank: Rank = rankMap[matchCount] ? rankMap[matchCount](isBonusMatched) : '꽝';
 
-    const rankMap: Record<number, Rank> = {
-      6: '1등',
-      5: bonusMatched ? '2등' : '3등',
-      4: '4등',
-      3: '5등',
-    };
-
-    const rank: Rank = rankMap[matchCount] ?? '꽝';
     results[rank]++;
   });
 
