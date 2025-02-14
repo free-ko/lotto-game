@@ -1,4 +1,4 @@
-import { type Rank } from '@/types';
+import type { IWinningDraw, Rank } from '@/types';
 import { LOTTO_MAX_NUMBER, LOTTO_TICKET_COUNT } from '@/constants';
 
 /**
@@ -56,7 +56,7 @@ export const generateWinningDraw = () => {
  */
 export const calculateWinningResults = (
   tickets: number[][],
-  winningDraw: { winningNumbers: number[]; bonusNumber: number },
+  winningDraw: IWinningDraw,
 ): Record<Rank, number> => {
   const results: Record<Rank, number> = {
     '1등': 0,

@@ -1,8 +1,8 @@
 import type {
-  ILottoPurchaseFormState,
   ILottoState,
   LottoAction,
   LottoPurchaseFormAction,
+  ILottoPurchaseFormState,
 } from '@/types';
 import { calculateWinningResults, generateTicketNumbers } from '@/utils';
 import { INITIAL_LOTTO_STATE, LOTTO_ACTIONS_TYPE, LOTTO_PURCHASE_FORM_TYPE } from '@/constants';

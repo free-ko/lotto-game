@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import type { Rank } from '@/types';
+import type { IWinningDraw, Rank } from '@/types';
 import { Button } from '@/components';
 
 interface ILottoHistory {
   tickets: number[][];
-  winningDraw: { winningNumbers: number[]; bonusNumber: number };
+  winningDraw: IWinningDraw;
   results: Record<Rank, number>;
   timestamp: number;
 }

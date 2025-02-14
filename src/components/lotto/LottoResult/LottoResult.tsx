@@ -1,8 +1,8 @@
-import type { Rank } from '@/types';
+import type { IWinningDraw, Rank } from '@/types';
 import { Button } from '@/components';
 
 interface ILottoResultProps {
-  winningDraw: { winningNumbers: number[]; bonusNumber: number } | null;
+  winningDraw: IWinningDraw | null;
   results: Record<Rank, number>;
   onCheckWinning: () => void;
 }

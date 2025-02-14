@@ -1,4 +1,5 @@
 export type Rank = '1등' | '2등' | '3등' | '4등' | '5등' | '꽝';
+
 export interface IWinningDraw {
   winningNumbers: number[];
   bonusNumber: number;
