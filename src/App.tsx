@@ -1,5 +1,12 @@
 import { useLottoPurchaseForm, useLottoGame } from '@/hooks';
-import { Button, LottoHistory, LottoPurchase, LottoResult, LottoStatistics } from '@/components';
+import {
+  Button,
+  LottoHistory,
+  LottoPurchase,
+  LottoResult,
+  LottoStatistics,
+  LottoTicketList,
+} from '@/components';
 
 import './index.css';
 
@@ -34,6 +41,8 @@ function App() {
           }}
           onPriceChange={handleChangePrice}
         />
+
+        <LottoTicketList tickets={tickets} />
 
         <LottoResult
           results={results}
