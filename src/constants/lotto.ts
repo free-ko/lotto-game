@@ -24,4 +24,9 @@ export const LOTTO_PURCHASE_FORM_TYPE = {
 } as const;
 
 export const LOTTO_PURCHASE_UNIT = 1000;
+
 export const LOTTO_PRICE_UNIT = '원';
+
+export const LOTTO_MAX_NUMBER = 45;
+
+export const LOTTO_TICKET_COUNT = 6;

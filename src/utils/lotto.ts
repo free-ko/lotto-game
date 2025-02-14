@@ -1,19 +1,37 @@
 import { type Rank } from '@/types';
+import { LOTTO_MAX_NUMBER, LOTTO_TICKET_COUNT } from '@/constants';
 
 /**
- * 1부터 45까지의 숫자 배열을 생성하고 무작위로 섞은 배열을 반환합니다.
+ * 숫자 배열을 생성합니다.
  */
-export const shuffleNumbers = (): number[] => {
-  const numbers = Array.from({ length: 45 }, (_, i) => i + 1);
-  return numbers.sort(() => Math.random() - 0.5);
+export const createNumberArray = (max: number = LOTTO_MAX_NUMBER): number[] => {
+  return Array.from({ length: max }, (_, i) => i + 1);
+};
+
+/**
+ * 주어진 배열을 무작위로 섞어 새로운 배열을 반환합니다.
+ * 원본 배열은 변경하지 않습니다.
+ * @param array - 섞을 배열
+ */
+export const shuffleArray = (array: number[]): number[] => {
+  const copy = array.slice();
+  return copy.sort(() => Math.random() - 0.5);
+};
+
+/**
+ * 1부터 45까지의 숫자 배열을 생성한 후 무작위로 섞은 배열을 반환합니다.
+ */
+export const generateShuffledNumbers = (): number[] => {
+  const numbers = createNumberArray();
+  return shuffleArray(numbers);
 };
 
 /**
  * 로또 티켓 번호 생성: 1~45 중 무작위 6개 숫자를 오름차순 정렬하여 반환합니다.
  */
 export const generateTicketNumbers = (): number[] => {
-  return shuffleNumbers()
-    .slice(0, 6)
+  return generateShuffledNumbers()
+    .slice(0, LOTTO_TICKET_COUNT)
     .sort((a, b) => a - b);
 };
 
@@ -23,7 +41,7 @@ export const generateTicketNumbers = (): number[] => {
  * - 보너스 번호: 7번째 번호
  */
 export const generateWinningDraw = () => {
-  const shuffledNumbers = shuffleNumbers();
+  const shuffledNumbers = generateShuffledNumbers();
   return {
     winningNumbers: shuffledNumbers.slice(0, 6).sort((a, b) => a - b),
     bonusNumber: shuffledNumbers[6],
