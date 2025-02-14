@@ -25,7 +25,7 @@ const useLottoGame = () => {
 
   return {
     numberFrequency,
-    history: state.history,
+    histories: state.histories,
     tickets: state.tickets,
     winningDraw: state.winningDraw,
     results: state.results,

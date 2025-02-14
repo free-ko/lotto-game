@@ -8,7 +8,7 @@ function App() {
     results,
     tickets,
     winningDraw,
-    history,
+    histories,
     numberFrequency,
     handleResetGame,
     handleCheckWinning,
@@ -44,7 +44,7 @@ function App() {
           }}
         />
 
-        <LottoHistory history={history} />
+        <LottoHistory histories={histories} />
 
         <LottoStatistics numberFrequency={numberFrequency} />
 

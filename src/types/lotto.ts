@@ -20,7 +20,7 @@ export interface ILottoState {
   tickets: number[][];
   winningDraw: IWinningDraw | null;
   results: Record<Rank, number>;
-  history: ILottoHistoryRecord[];
+  histories: ILottoHistoryRecord[];
 }
 
 export type LottoAction =

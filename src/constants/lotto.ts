@@ -9,7 +9,7 @@ export const INITIAL_LOTTO_STATE: ILottoState = {
   tickets: [],
   winningDraw: null,
   results: { '1등': 0, '2등': 0, '3등': 0, '4등': 0, '5등': 0, 꽝: 0 },
-  history: [],
+  histories: [],
 };
 
 export const LOTTO_ACTIONS_TYPE = {

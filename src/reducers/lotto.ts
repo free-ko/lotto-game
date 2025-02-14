@@ -41,7 +41,7 @@ export const lottoReducer = (state: ILottoState, action: LottoAction): ILottoSta
         timestamp: Date.now(),
       };
 
-      return { ...state, winningDraw, results, history: [...state.history, newRecord] };
+      return { ...state, winningDraw, results, histories: [...state.histories, newRecord] };
     }
 
     case LOTTO_ACTIONS_TYPE.RESET:
