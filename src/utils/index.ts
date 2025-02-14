@@ -1,2 +1,2 @@
 export * from './mergeTailwindCSS';
-export * from './lotto';
+export * from './arrayUtils';

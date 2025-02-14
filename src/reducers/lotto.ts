@@ -4,7 +4,7 @@ import type {
   LottoPurchaseFormAction,
   ILottoPurchaseFormState,
 } from '@/types';
-import { calculateWinningResults, generateTicketNumbers } from '@/utils';
+import { calculateWinningResults, generateTicketNumbers } from '@/features';
 import { INITIAL_LOTTO_STATE, LOTTO_ACTIONS_TYPE, LOTTO_PURCHASE_FORM_TYPE } from '@/constants';
 
 export const lottoPurchaseFromReducer = (

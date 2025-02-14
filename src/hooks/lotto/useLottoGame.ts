@@ -1,12 +1,12 @@
 import { useReducer } from 'react';
 
 import { lottoReducer } from '@/reducers';
-import { calculateNumberFrequency, generateWinningDraw } from '@/utils';
+import { calculateLottoNumberFrequency, generateWinningDraw } from '@/features';
 import { INITIAL_LOTTO_STATE, LOTTO_ACTIONS_TYPE } from '@/constants';
 
 const useLottoGame = () => {
   const [state, dispatch] = useReducer(lottoReducer, INITIAL_LOTTO_STATE);
-  const numberFrequency = calculateNumberFrequency(state.tickets);
+  const numberFrequency = calculateLottoNumberFrequency(state.tickets);
 
   const handlePurchaseLotto = (price: string) => {
     const priceNumber = parseInt(price, 10);
