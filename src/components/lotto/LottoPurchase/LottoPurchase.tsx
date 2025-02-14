@@ -19,8 +19,11 @@ const LottoPurchase = ({
     <div>
       <div className="flex items-end space-x-2">
         <div className="flex-grow">
-          <label className="text-sm font-medium">로또 구매 금액</label>
+          <label htmlFor="lottoPrice" className="text-sm font-medium">
+            로또 구매 금액
+          </label>
           <Input
+            id="lottoPrice"
             type="number"
             value={price}
             className="mt-1"
