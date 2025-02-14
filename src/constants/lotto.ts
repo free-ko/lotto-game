@@ -22,3 +22,6 @@ export const LOTTO_PURCHASE_FORM_TYPE = {
   SET_PRICE: 'SET_PRICE',
   SET_ERROR: 'SET_PRICE_ERROR',
 } as const;
+
+export const LOTTO_PURCHASE_UNIT = 1000;
+export const LOTTO_PRICE_UNIT = '원';

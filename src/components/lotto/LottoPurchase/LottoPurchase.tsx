@@ -1,4 +1,5 @@
 import { Button, Input } from '@/components';
+import { LOTTO_PRICE_UNIT, LOTTO_PURCHASE_UNIT } from '@/constants';
 
 interface ILottoPurchaseProps {
   price: string;
@@ -35,7 +36,10 @@ const LottoPurchase = ({
       </div>
 
       {hasPriceError && (
-        <p className="mt-2 text-sm text-red-500">로또 금액은 1,000원 단위로 입력해주세요.</p>
+        <p className="mt-2 text-sm text-red-500">
+          로또 금액은 {LOTTO_PURCHASE_UNIT.toLocaleString()}
+          {LOTTO_PRICE_UNIT} 단위로 입력해주세요.
+        </p>
       )}
     </div>
   );
