@@ -1,1 +1,1 @@
-export { default as lottoReducer } from './lotto';
+export * from './lotto';

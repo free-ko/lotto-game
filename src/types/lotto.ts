@@ -11,9 +11,12 @@ export interface ILottoHistoryRecord {
   timestamp: number;
 }
 
-export interface ILottoState {
+export interface ILottoPurchaseFormState {
   price: string;
-  priceError: boolean;
+  hasPriceError: boolean;
+}
+
+export interface ILottoState {
   tickets: number[][];
   winningDraw: IWinningDraw | null;
   results: Record<Rank, number>;
@@ -21,8 +24,10 @@ export interface ILottoState {
 }
 
 export type LottoAction =
-  | { type: 'SET_PRICE'; payload: string }
-  | { type: 'SET_ERROR'; payload: boolean }
   | { type: 'PURCHASE'; payload: number }
   | { type: 'CHECK_WINNING'; payload: IWinningDraw }
   | { type: 'RESET' };
+
+export type LottoPurchaseFormAction =
+  | { type: 'SET_PRICE'; payload: string }
+  | { type: 'SET_PRICE_ERROR'; payload: boolean };

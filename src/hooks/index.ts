@@ -1,1 +1,1 @@
-export { default as useLotto } from './lotto';
+export * from './lotto';

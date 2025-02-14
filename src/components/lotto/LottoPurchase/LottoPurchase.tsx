@@ -2,7 +2,7 @@ import { Button, Input } from '@/components';
 
 interface ILottoPurchaseProps {
   price: string;
-  priceError: boolean;
+  hasPriceError: boolean;
   tickets: number[][];
   onPurchase: () => void;
   onPriceChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -11,7 +11,7 @@ interface ILottoPurchaseProps {
 const LottoPurchase = ({
   price,
   tickets,
-  priceError,
+  hasPriceError,
   onPurchase,
   onPriceChange,
 }: ILottoPurchaseProps) => {
@@ -24,7 +24,7 @@ const LottoPurchase = ({
             type="number"
             value={price}
             className="mt-1"
-            hasError={priceError}
+            hasError={hasPriceError}
             placeholder="금액을 입력하세요"
             onChange={onPriceChange}
           />
@@ -32,7 +32,7 @@ const LottoPurchase = ({
         <Button onClick={onPurchase}>구매</Button>
       </div>
 
-      {priceError && (
+      {hasPriceError && (
         <p className="mt-2 text-sm text-red-500">로또 금액은 1,000원 단위로 입력해주세요.</p>
       )}
 
