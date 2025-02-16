@@ -1,2 +1,2 @@
 export { default as useLottoGame } from './useLottoGame';
-export { default as useLottoPurchaseForm } from './useLottoPurchaseForm';
+export { default as useLottoGamePurchaseForm } from './useLottoGamePurchaseForm';

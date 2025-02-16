@@ -1,13 +1,13 @@
+import { LOTTO } from '@/constants';
 import type { IWinningDraw, Rank } from '@/types';
-import { LOTTO_TICKET_COUNT } from '@/constants';
-import { generateShuffledNumbers } from '@/utils';
+import { generateShuffledNumbersArray } from '@/utils';
 
 /**
  * 로또 티켓 번호 생성: 1~45 중 무작위 6개 숫자를 오름차순 정렬하여 반환합니다.
  */
 export const generateTicketNumbers = (): number[] => {
-  return generateShuffledNumbers()
-    .slice(0, LOTTO_TICKET_COUNT)
+  return generateShuffledNumbersArray(LOTTO.CONFIG.MAX_NUMBER)
+    .slice(0, LOTTO.CONFIG.TICKET_COUNT)
     .sort((a, b) => a - b);
 };
 
@@ -17,10 +17,10 @@ export const generateTicketNumbers = (): number[] => {
  * - 보너스 번호: 7번째 번호
  */
 export const generateWinningDraw = () => {
-  const shuffledNumbers = generateShuffledNumbers();
+  const shuffledNumbers = generateShuffledNumbersArray(LOTTO.CONFIG.MAX_NUMBER);
   return {
-    winningNumbers: shuffledNumbers.slice(0, LOTTO_TICKET_COUNT).sort((a, b) => a - b),
-    bonusNumber: shuffledNumbers[LOTTO_TICKET_COUNT],
+    winningNumbers: shuffledNumbers.slice(0, LOTTO.CONFIG.TICKET_COUNT).sort((a, b) => a - b),
+    bonusNumber: shuffledNumbers[LOTTO.CONFIG.TICKET_COUNT],
   };
 };
 
@@ -68,7 +68,7 @@ export const calculateWinningResults = (
  */
 export const calculateLottoNumberFrequency = (tickets: number[][]): Record<number, number> => {
   const frequency: Record<number, number> = {};
-  for (let i = 1; i <= 45; i++) {
+  for (let i = 1; i <= LOTTO.CONFIG.MAX_NUMBER; i++) {
     frequency[i] = 0;
   }
   tickets.forEach(ticket => {

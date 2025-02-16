@@ -1,1 +1,1 @@
-export * from './lottoCalculator';
+export * from './lotto';

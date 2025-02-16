@@ -1,25 +1,22 @@
-import { useState } from 'react';
-
 import { Button } from '@/components';
+import { LOTTO } from '@/constants';
 
 interface IStatisticsSectionProps {
-  numberFrequency: Record<number, number>;
+  lottoNumberFrequencyMaxCount: number;
+  isShowStatistics: boolean;
+  toggleIsStatistics: () => void;
+  frequencyArray: { number: number; count: number }[];
 }
 
-const MAX_BAR_HEIGHT = 150;
-
-const StatisticsSection = ({ numberFrequency }: IStatisticsSectionProps) => {
-  const [isShowStatistics, setIsShowStatistics] = useState<boolean>(false);
-
-  const frequencyArray = Object.entries(numberFrequency)
-    .map(([num, count]) => ({ number: Number(num), count }))
-    .sort((a, b) => a.number - b.number);
-
-  const maxCount = Math.max(...frequencyArray.map(item => item.count), 1);
-
+const StatisticsSection = ({
+  lottoNumberFrequencyMaxCount,
+  frequencyArray,
+  isShowStatistics,
+  toggleIsStatistics,
+}: IStatisticsSectionProps) => {
   return (
     <>
-      <Button className="mt-4 w-full" onClick={() => setIsShowStatistics(prev => !prev)}>
+      <Button className="mt-4 w-full" onClick={toggleIsStatistics}>
         통계 보기
       </Button>
 
@@ -30,7 +27,8 @@ const StatisticsSection = ({ numberFrequency }: IStatisticsSectionProps) => {
             <div className="relative h-[200px] border-t border-gray-300 px-2">
               <div className="absolute right-0 bottom-0 left-0 flex items-end space-x-2">
                 {frequencyArray.map(({ number, count }) => {
-                  const barHeight = (count / maxCount) * MAX_BAR_HEIGHT;
+                  const barHeight =
+                    (count / lottoNumberFrequencyMaxCount) * LOTTO.CONFIG.STATISTICS_MAX_BAR_HEIGHT;
                   return (
                     <div key={number} className="flex flex-col items-center">
                       <span className="text-xs text-gray-600">{count}</span>

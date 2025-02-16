@@ -1,7 +1,5 @@
-import { useState } from 'react';
-
-import type { IWinningDraw, Rank } from '@/types';
 import { Button } from '@/components';
+import type { IWinningDraw, Rank } from '@/types';
 
 interface ILottoHistory {
   tickets: number[][];
@@ -11,19 +9,23 @@ interface ILottoHistory {
 }
 
 interface ILottoHistoryProps {
+  isShowHistories: boolean;
   histories: ILottoHistory[];
+  toggleIsShowHistories: () => void;
 }
 
-const LottoHistory = ({ histories }: ILottoHistoryProps) => {
-  const [isShowHistory, setIsShowHistory] = useState<boolean>(false);
-
+const LottoHistory = ({
+  histories,
+  isShowHistories,
+  toggleIsShowHistories,
+}: ILottoHistoryProps) => {
   return (
     <>
-      <Button className="w-full" onClick={() => setIsShowHistory(prev => !prev)}>
+      <Button className="w-full" onClick={toggleIsShowHistories}>
         당첨기록 보기
       </Button>
 
-      {isShowHistory && (
+      {isShowHistories && (
         <div className="mt-4">
           <h2 className="mb-4 text-center text-2xl font-bold">과거 당첨 기록</h2>
           {histories.length === 0 ? (

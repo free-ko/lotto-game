@@ -4,18 +4,18 @@ import type {
   LottoPurchaseFormAction,
   ILottoPurchaseFormState,
 } from '@/types';
+import { LOTTO } from '@/constants';
 import { calculateWinningResults, generateTicketNumbers } from '@/features';
-import { INITIAL_LOTTO_STATE, LOTTO_ACTIONS_TYPE, LOTTO_PURCHASE_FORM_TYPE } from '@/constants';
 
 export const lottoPurchaseFromReducer = (
   state: ILottoPurchaseFormState,
   action: LottoPurchaseFormAction,
 ): ILottoPurchaseFormState => {
   switch (action.type) {
-    case LOTTO_PURCHASE_FORM_TYPE.SET_PRICE:
+    case LOTTO.PURCHASE_FORM_ACTIONS.SET_PRICE:
       return { ...state, price: action.payload, hasPriceError: false };
 
-    case LOTTO_PURCHASE_FORM_TYPE.SET_ERROR:
+    case LOTTO.PURCHASE_FORM_ACTIONS.SET_ERROR:
       return { ...state, hasPriceError: action.payload };
 
     default:
@@ -25,13 +25,13 @@ export const lottoPurchaseFromReducer = (
 
 export const lottoReducer = (state: ILottoState, action: LottoAction): ILottoState => {
   switch (action.type) {
-    case LOTTO_ACTIONS_TYPE.PURCHASE: {
-      const ticketCount = action.payload / 1000;
+    case LOTTO.GAME_ACTIONS.PURCHASE: {
+      const ticketCount = action.payload / LOTTO.CONFIG.PURCHASE_UNIT;
       const newTickets = Array.from({ length: ticketCount }, () => generateTicketNumbers());
       return { ...state, tickets: [...state.tickets, ...newTickets] };
     }
 
-    case LOTTO_ACTIONS_TYPE.CHECK_WINNING: {
+    case LOTTO.GAME_ACTIONS.CHECK_WINNING: {
       const winningDraw = action.payload;
       const results = calculateWinningResults(state.tickets, winningDraw);
       const newRecord = {
@@ -44,8 +44,8 @@ export const lottoReducer = (state: ILottoState, action: LottoAction): ILottoSta
       return { ...state, winningDraw, results, histories: [...state.histories, newRecord] };
     }
 
-    case LOTTO_ACTIONS_TYPE.RESET:
-      return INITIAL_LOTTO_STATE;
+    case LOTTO.GAME_ACTIONS.RESET:
+      return LOTTO.INITIAL_STATE;
 
     default:
       return state;

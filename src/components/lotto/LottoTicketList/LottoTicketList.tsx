@@ -1,8 +1,4 @@
 const LottoTicketList = ({ tickets }: { tickets: number[][] }) => {
-  if (tickets.length === 0) {
-    return null;
-  }
-
   return (
     <div className="mt-4 mb-4">
       <h2 className="mb-2 text-lg font-semibold">구매한 로또 번호</h2>

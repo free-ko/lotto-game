@@ -1,5 +1,6 @@
+import { LOTTO } from '@/constants';
 import { Button, Input } from '@/components';
-import { LOTTO_PRICE_UNIT, LOTTO_PURCHASE_UNIT } from '@/constants';
+import { commaizeNumber } from '@/utils';
 
 interface ILottoPurchaseProps {
   price: string;
@@ -37,8 +38,8 @@ const LottoPurchase = ({
 
       {hasPriceError && (
         <p className="mt-2 text-sm text-red-500">
-          로또 금액은 {LOTTO_PURCHASE_UNIT.toLocaleString()}
-          {LOTTO_PRICE_UNIT} 단위로 입력해주세요.
+          로또 금액은 {commaizeNumber(LOTTO.CONFIG.PURCHASE_UNIT)}
+          {LOTTO.CONFIG.PRICE_UNIT} 단위로 입력해주세요.
         </p>
       )}
     </div>
