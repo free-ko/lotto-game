@@ -1,23 +1,13 @@
 import type { IWinningDraw, Rank } from '@/types';
-import { Button } from '@/components';
 
 interface ILottoResultProps {
-  tickets: number[][];
   winningDraw: IWinningDraw | null;
   results: Record<Rank, number>;
-  onCheckWinning: () => void;
 }
 
-const LottoResult = ({ tickets, winningDraw, results, onCheckWinning }: ILottoResultProps) => {
+const LottoResult = ({ winningDraw, results }: ILottoResultProps) => {
   return (
     <div>
-      <Button
-        size="lg"
-        className="mb-4 w-full"
-        onClick={onCheckWinning}
-        disabled={tickets.length === 0}>
-        결과 확인
-      </Button>
       {winningDraw && (
         <div>
           <h2 className="mb-2 text-lg font-semibold">당첨 번호</h2>

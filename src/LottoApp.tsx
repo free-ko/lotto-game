@@ -54,12 +54,15 @@ function LottoApp() {
 
         {tickets.length !== 0 && <LottoTicketList tickets={tickets} />}
 
-        <LottoResult
-          tickets={tickets}
-          results={results}
-          winningDraw={winningDraw}
-          onCheckWinning={handleCheckWinning}
-        />
+        <Button
+          size="lg"
+          className="mb-4 w-full"
+          onClick={handleCheckWinning}
+          disabled={tickets.length === 0}>
+          결과 확인
+        </Button>
+
+        <LottoResult results={results} winningDraw={winningDraw} />
 
         <LottoHistory
           histories={histories}
