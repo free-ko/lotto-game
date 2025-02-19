@@ -41,7 +41,6 @@ function LottoApp() {
         <h1 className="mb-4 text-center text-2xl font-bold">로또 어플리케이션</h1>
         <LottoPurchase
           price={price}
-          tickets={tickets}
           hasPriceError={hasPriceError}
           onPurchase={() => {
             if (!validatePrice()) return;
@@ -52,7 +51,7 @@ function LottoApp() {
           onPriceChange={handleChangePrice}
         />
 
-        {tickets.length !== 0 && <LottoTicketList tickets={tickets} />}
+        {tickets.length > 0 && <LottoTicketList tickets={tickets} />}
 
         <Button
           size="lg"
@@ -62,20 +61,24 @@ function LottoApp() {
           결과 확인
         </Button>
 
-        <LottoResult results={results} winningDraw={winningDraw} />
+        {winningDraw && <LottoResult results={results} winningDraw={winningDraw} />}
 
-        <LottoHistory
-          histories={histories}
-          isShowHistories={isShowHistories}
-          toggleIsShowHistories={toggleIsShowHistories}
-        />
+        <Button className="w-full" onClick={toggleIsShowHistories}>
+          당첨기록 보기
+        </Button>
 
-        <LottoStatistics
-          lottoNumberFrequencyMaxCount={lottoNumberFrequencyMaxCount}
-          isShowStatistics={isShowStatistics}
-          frequencyArray={frequencyArray}
-          toggleIsStatistics={toggleIsStatistics}
-        />
+        {isShowHistories && <LottoHistory histories={histories} />}
+
+        <Button className="mt-4 w-full" onClick={toggleIsStatistics}>
+          통계 보기
+        </Button>
+
+        {isShowStatistics && (
+          <LottoStatistics
+            frequencyArray={frequencyArray}
+            lottoNumberFrequencyMaxCount={lottoNumberFrequencyMaxCount}
+          />
+        )}
 
         <Button className="mt-4 mb-4 w-full" size="lg" onClick={handleResetLottoGame}>
           처음부터 다시하기

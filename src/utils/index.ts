@@ -1,3 +1,3 @@
 export * from './mergeTailwindCSS';
-export * from './arrayUtils';
+export * from './array';
 export * from './commaizeNumber';

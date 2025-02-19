@@ -5,7 +5,6 @@ import { commaizeNumber } from '@/utils';
 interface ILottoPurchaseProps {
   price: string;
   hasPriceError: boolean;
-  tickets: number[][];
   onPurchase: () => void;
   onPriceChange: React.ChangeEventHandler<HTMLInputElement>;
 }

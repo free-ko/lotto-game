@@ -27,7 +27,12 @@ export const lottoReducer = (state: ILottoState, action: LottoAction): ILottoSta
   switch (action.type) {
     case LOTTO.GAME_ACTIONS.PURCHASE: {
       const ticketCount = action.payload / LOTTO.CONFIG.PURCHASE_UNIT;
-      const newTickets = Array.from({ length: ticketCount }, () => generateTicketNumbers());
+      const newTickets = Array.from({ length: ticketCount }, () =>
+        generateTicketNumbers({
+          maxNumber: LOTTO.CONFIG.MAX_NUMBER,
+          ticketCount: LOTTO.CONFIG.TICKET_COUNT,
+        }),
+      );
       return { ...state, tickets: [...state.tickets, ...newTickets] };
     }
 

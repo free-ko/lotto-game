@@ -8,8 +8,8 @@ import { useBooleanState } from '../shared';
 const useLottoGame = () => {
   const [state, dispatch] = useReducer(lottoReducer, LOTTO.INITIAL_STATE);
   const numberFrequency = calculateLottoNumberFrequency(state.tickets);
-  const [isShowStatistics, , setHideStatistics, toggleIsStatistics] = useBooleanState(false);
-  const [isShowHistories, , setHideHistories, toggleIsShowHistories] = useBooleanState(false);
+  const [isShowStatistics, , hideStatistics, toggleIsStatistics] = useBooleanState(false);
+  const [isShowHistories, , hideHistories, toggleIsShowHistories] = useBooleanState(false);
 
   const frequencyArray = Object.entries(numberFrequency)
     .map(([num, count]) => ({ number: Number(num), count }))
@@ -30,8 +30,8 @@ const useLottoGame = () => {
 
   const handleResetGame = () => {
     dispatch({ type: LOTTO.GAME_ACTIONS.RESET });
-    setHideStatistics();
-    setHideHistories();
+    hideStatistics();
+    hideHistories();
   };
 
   return {
